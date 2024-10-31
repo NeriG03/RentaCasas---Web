@@ -4,8 +4,9 @@ const usuarioService = new UsuarioService();
 
 const post = async (req, res) => {
     try {
-        const usuario = await usuarioService.create(req.body);
-        res.status(201).json(usuario);
+        const { nombre, email, telefono, password } = req.body;
+        /* const usuario = await usuarioService.create(req.body);
+        res.status(201).json(usuario); */
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
