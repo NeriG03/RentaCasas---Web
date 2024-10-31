@@ -105,4 +105,13 @@ const login = async (req, res) => {
     }
 }
 
-export default { post, get, getById, put, deleteUser, login };
+const profile = async (req, res) => {
+    try {
+        const usuario = await usuarioService.getByEmail(req.email);
+        res.status(200).json(usuario);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+export default { post, get, getById, put, deleteUser, login, profile };
