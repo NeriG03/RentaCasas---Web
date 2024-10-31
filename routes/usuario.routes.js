@@ -10,7 +10,7 @@ router
     .post('/usuario', UsuarioController.post)
     .put('/usuario/:id', UsuarioController.put)
     .delete('/usuario/:id', UsuarioController.deleteUser)
-    .post('/usuario/login', UsuarioController.login)
-    .get('/usuarioProfile', verifyToken, UsuarioController.profile);
+    .post('/usuarioL/login', UsuarioController.login)
+    .get('/usuarioP/profile', verifyToken, UsuarioController.profile);
 
 export default router;
