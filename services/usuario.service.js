@@ -31,6 +31,14 @@ class UsuarioService{
         });
     }
 
+    async getByEmail(email){
+        return await Usuario.findOne({
+            where: {
+                email
+            }
+        });
+    }
+
 }
 
 export default UsuarioService;

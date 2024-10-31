@@ -1,12 +1,31 @@
 import UsuarioService from "../services/usuario.service.js";
+import bcryptjs from "bcryptjs";
 
 const usuarioService = new UsuarioService();
 
 const post = async (req, res) => {
     try {
         const { nombre, email, telefono, password } = req.body;
-        /* const usuario = await usuarioService.create(req.body);
-        res.status(201).json(usuario); */
+
+        if (!nombre || !email || !telefono || !password) {
+            throw new Error("nombre, email, telefono y password son campos obligatorios");
+        }
+
+        const userExists = await usuarioService.getByEmail(email);
+        if (userExists) {
+            throw new Error("El email ya está registrado");
+        }
+
+        const salt = bcryptjs.genSaltSync(15);
+        const hash = bcryptjs.hashSync(password, salt);
+
+
+        const usuario = await usuarioService.create({ nombre, email, telefono, password: hash });
+
+        
+
+
+        res.status(201).json(usuario); 
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
