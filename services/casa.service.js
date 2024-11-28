@@ -37,6 +37,15 @@ class CasaService{
         });
     }
 
+    async getByUserEmail(email) {
+        return await Casa.findAll({
+            include: {
+                model: Usuario,
+                where: { email }
+            }
+        });
+    }
+
 }
 
 export default CasaService;

@@ -99,7 +99,13 @@ const login = async (req, res) => {
             expiresIn: "1h",
         });
 
-        res.status(200).json({ok: true,  token: token });
+        const resUser = {
+            nombre: usuario.nombre,
+            email: usuario.email,
+            id: usuario.id
+        }
+
+        res.status(200).json({ok: true,  token: token , usuario: resUser});
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

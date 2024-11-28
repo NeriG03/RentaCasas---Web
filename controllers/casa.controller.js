@@ -29,6 +29,15 @@ const getById = async (req, res) => {
     }
 };
 
+const getByUserEmail = async (req, res) => {
+    try {
+        const casas = await casaService.getByUserEmail(req.params.email);
+        res.status(200).json(casas);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
 const put = async (req, res) => {
     try {
         await casaService.update(req.params.id, req.body);
@@ -47,4 +56,4 @@ const deleteCasa = async (req, res) => {
     }
 };
 
-export default { post, get, getById, put, deleteCasa };
+export default { post, get, getById, put, deleteCasa, getByUserEmail };
