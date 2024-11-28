@@ -31,7 +31,7 @@ const post = async (req, res) => {
 
 
         
-        res.status(201).json({ok: true, message: token}); 
+        res.status(201).json({ok: true, token: token}); 
     
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -99,7 +99,7 @@ const login = async (req, res) => {
             expiresIn: "1h",
         });
 
-        res.status(200).json({ok: true,  message: token });
+        res.status(200).json({ok: true,  token: token });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
