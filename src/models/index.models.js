@@ -14,7 +14,11 @@ function setUpModels(sequelize){
 }
 
 
-const sequelize = new Sequelize(
+const sequelize = new Sequelize(config.dbUrl, {
+    dialect: 'postgres'
+});
+
+/* const sequelize = new Sequelize(
     config.dbName, 
     config.dbUser, 
     config.dbPassword, {
@@ -22,7 +26,7 @@ const sequelize = new Sequelize(
     port: config.dbPort,
     dialect: 'postgres'
 })
-
+ */
 
 sequelize.sync()
 setUpModels(sequelize);
