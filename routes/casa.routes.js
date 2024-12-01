@@ -7,7 +7,7 @@ const router = express.Router();
 router
     .get('/casa', CasaController.get)
     .get('/casa/:id', CasaController.getById)
-    .get('/casa/user/:id', CasaController.getByUserEmail)
+    .get('/casa/user/:email', CasaController.getByUserEmail)
     .post('/casa' ,CasaController.post)
     .put('/casa/:id' ,CasaController.put)
     .delete('/casa/:id' ,CasaController.deleteCasa);
